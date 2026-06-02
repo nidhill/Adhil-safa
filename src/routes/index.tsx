@@ -631,8 +631,12 @@ function IntroOverlay({ onEnter }: { onEnter: () => void }) {
       <p className="font-sans text-xs uppercase tracking-[0.45em] text-muted-foreground">
         Together with their families
       </p>
-      <p className="mt-6 font-serif text-6xl text-[color:var(--burgundy)] sm:text-7xl">
-        Adhil <span className="font-script text-[color:var(--gold)]">&amp;</span> Safa
+      <p className="mt-6 flex items-center justify-center gap-3 font-serif text-6xl text-[color:var(--burgundy)] sm:gap-6 sm:text-7xl">
+        <span>Adhil</span>
+        <span className="font-script text-[7rem] leading-[0.6] text-[color:var(--gold)] sm:text-[9rem]">
+          &amp;
+        </span>
+        <span>Safa</span>
       </p>
       <p className="mt-4 font-serif text-2xl sm:text-3xl">11 . 07 . 2026</p>
       <div className="mt-8">
