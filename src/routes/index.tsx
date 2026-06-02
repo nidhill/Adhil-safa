@@ -619,7 +619,26 @@ function MusicButton({ playing, onToggle }: { playing: boolean; onToggle: () => 
 function IntroOverlay({ onEnter }: { onEnter: () => void }) {
   const [closing, setClosing] = useState(false);
   const [gone, setGone] = useState(false);
+
+  // Keep the page pinned to the top and stop the content behind the cover from
+  // scrolling, so the guest always lands on the hero when they tap "Open".
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, []);
+
   if (gone) return null;
+
+  const handleOpen = () => {
+    window.scrollTo(0, 0);
+    document.body.style.overflow = ""; // re-enable scrolling right away
+    onEnter();
+    setClosing(true);
+  };
 
   return (
     <div
@@ -644,10 +663,7 @@ function IntroOverlay({ onEnter }: { onEnter: () => void }) {
       </div>
       <button
         type="button"
-        onClick={() => {
-          onEnter();
-          setClosing(true);
-        }}
+        onClick={handleOpen}
         className="group relative mt-10 inline-block overflow-hidden border border-[color:var(--burgundy)] px-10 py-4 text-[11px] uppercase tracking-[0.3em] text-[color:var(--burgundy)] transition-colors duration-500 hover:text-primary-foreground"
       >
         <span className="relative z-10 flex items-center gap-2">
