@@ -652,7 +652,7 @@ function IntroOverlay({ onEnter }: { onEnter: () => void }) {
       </p>
       <p className="mt-6 flex items-center justify-center gap-3 font-serif text-6xl text-[color:var(--burgundy)] sm:gap-6 sm:text-7xl">
         <span>Adhil</span>
-        <span className="font-script text-[7rem] leading-[0.6] text-[color:var(--gold)] sm:text-[9rem]">
+        <span className="font-serif text-7xl italic leading-none text-[color:var(--gold)] sm:text-8xl">
           &amp;
         </span>
         <span>Safa</span>
