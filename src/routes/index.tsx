@@ -8,7 +8,7 @@ import hands from "@/assets/hands.webp";
 // WhatsApp/Facebook require an ABSOLUTE og:image URL, so set this before sharing the link.
 // Left blank it falls back to a root-relative path, which previews correctly in most
 // modern crawlers but is less reliable on WhatsApp.
-const SITE_URL = "";
+const SITE_URL = "https://adhil-safa.vercel.app";
 const OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 export const Route = createFileRoute("/")({
@@ -631,8 +631,8 @@ function IntroOverlay({ onEnter }: { onEnter: () => void }) {
       <p className="font-sans text-xs uppercase tracking-[0.45em] text-muted-foreground">
         Together with their families
       </p>
-      <p className="mt-6 font-script text-6xl text-[color:var(--burgundy)] sm:text-7xl">
-        Adhil &amp; Safa
+      <p className="mt-6 font-serif text-6xl text-[color:var(--burgundy)] sm:text-7xl">
+        Adhil <span className="font-script text-[color:var(--gold)]">&amp;</span> Safa
       </p>
       <p className="mt-4 font-serif text-2xl sm:text-3xl">11 . 07 . 2026</p>
       <div className="mt-8">
