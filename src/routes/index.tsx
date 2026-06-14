@@ -39,7 +39,7 @@ export const Route = createFileRoute("/")({
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&family=Jost:wght@300;400;500&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap",
       },
     ],
   }),
@@ -266,256 +266,140 @@ function AddToCalendarButton() {
 }
 
 /* ------------------------------------------------------------------ *
- * Downloadable invitation card
+ * Downloadable reception card
  *
  * A fixed-size (portrait) card rendered off-screen, captured to PNG with
- * html-to-image. It uses explicit hex colours instead of the site's oklch
- * CSS variables, because html-to-image can't reliably serialise oklch().
+ * html-to-image. Navy "wedding reception" design — Cormorant Garamond serif
+ * caps + Great Vibes script names. Explicit hex colours (not the site's oklch
+ * CSS variables, which html-to-image can't reliably serialise).
  * ------------------------------------------------------------------ */
-const INK = "#2a211f";
-const BURGUNDY = "#6e2433";
-const GOLD = "#9c7b3f";
-const GOLD_SOFT = "rgba(176, 137, 78, 0.5)";
-const MUTED = "#786f64";
-const SAGE = "#c7d3c2";
-const IVORY = "#fbfaf6";
+const CARD_BG = "#fdfdfb";
+const NAVY = "#262b6d";
+const NAVY_LINE = "rgba(38, 43, 109, 0.4)";
 
-const SERIF = '"Playfair Display", "Cormorant Garamond", Georgia, serif';
-const SCRIPT = '"Pinyon Script", cursive';
-const SANS = '"Jost", system-ui, sans-serif';
+const C_SERIF = '"Cormorant Garamond", Georgia, serif';
+const C_SCRIPT = '"Great Vibes", "Pinyon Script", cursive';
 
 function PrintableCard({ cardRef }: { cardRef: React.Ref<HTMLDivElement> }) {
-  const label: React.CSSProperties = {
-    fontFamily: SANS,
-    fontSize: 14,
-    letterSpacing: "0.35em",
+  // Small tracked caps for the secondary lines.
+  const tiny: React.CSSProperties = {
+    fontFamily: C_SERIF,
+    fontSize: 19,
+    fontWeight: 500,
+    letterSpacing: "0.16em",
     textTransform: "uppercase",
-    color: MUTED,
+    color: NAVY,
+    margin: 0,
   };
-  const lineage: React.CSSProperties = {
-    fontFamily: SERIF,
-    fontStyle: "italic",
-    fontSize: 17,
-    color: MUTED,
-    margin: "10px auto 0",
-    maxWidth: 540,
-    lineHeight: 1.5,
+  // Prominent serif caps (hosts, occasion, venue).
+  const head: React.CSSProperties = {
+    fontFamily: C_SERIF,
+    fontSize: 33,
+    fontWeight: 600,
+    letterSpacing: "0.05em",
+    textTransform: "uppercase",
+    color: NAVY,
+    margin: 0,
   };
-  const corner = (pos: React.CSSProperties): React.CSSProperties => ({
+  const script: React.CSSProperties = {
+    fontFamily: C_SCRIPT,
+    color: NAVY,
+    lineHeight: 0.95,
+    margin: 0,
+  };
+  const corner = (pos: React.CSSProperties, rotate: string): React.CSSProperties => ({
     position: "absolute",
-    width: 26,
-    height: 26,
+    width: 56,
+    height: 56,
+    transform: `rotate(${rotate})`,
     ...pos,
   });
+  const Flourish = () => (
+    <svg width="56" height="56" viewBox="0 0 56 56" fill="none" stroke={NAVY} strokeWidth="1">
+      <path d="M3 22 C3 11, 11 3, 22 3" opacity="0.55" />
+      <path d="M3 31 C3 14, 14 3, 31 3" opacity="0.35" />
+      <circle cx="21" cy="21" r="1.6" fill={NAVY} stroke="none" opacity="0.6" />
+    </svg>
+  );
 
   return (
     <div
       ref={cardRef}
       style={{
         width: 1080,
-        padding: 64,
+        padding: 40,
         boxSizing: "border-box",
-        background: `radial-gradient(900px 460px at 8% -5%, rgba(170,196,170,0.40), transparent 60%), radial-gradient(760px 420px at 105% 108%, rgba(170,196,170,0.36), transparent 60%), ${IVORY}`,
-        color: INK,
-        fontFamily: SANS,
+        background: CARD_BG,
+        color: NAVY,
+        fontFamily: C_SERIF,
       }}
     >
       <div
         style={{
           position: "relative",
-          background: "#fffefb",
-          border: `1px solid ${SAGE}`,
-          padding: "92px 72px 80px",
+          border: `1px solid ${NAVY_LINE}`,
+          padding: "92px 104px 88px",
           textAlign: "center",
         }}
       >
-        {/* decorative gold frame + corners */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 14,
-            border: `1px solid ${GOLD_SOFT}`,
-            pointerEvents: "none",
-          }}
-        />
-        <span
-          style={corner({
-            top: 6,
-            left: 6,
-            borderTop: `1px solid ${GOLD}`,
-            borderLeft: `1px solid ${GOLD}`,
-          })}
-        />
-        <span
-          style={corner({
-            top: 6,
-            right: 6,
-            borderTop: `1px solid ${GOLD}`,
-            borderRight: `1px solid ${GOLD}`,
-          })}
-        />
-        <span
-          style={corner({
-            bottom: 6,
-            left: 6,
-            borderBottom: `1px solid ${GOLD}`,
-            borderLeft: `1px solid ${GOLD}`,
-          })}
-        />
-        <span
-          style={corner({
-            bottom: 6,
-            right: 6,
-            borderBottom: `1px solid ${GOLD}`,
-            borderRight: `1px solid ${GOLD}`,
-          })}
-        />
+        {/* corner flourishes */}
+        <div style={corner({ top: -1, left: -1 }, "0deg")}>
+          <Flourish />
+        </div>
+        <div style={corner({ top: -1, right: -1 }, "90deg")}>
+          <Flourish />
+        </div>
+        <div style={corner({ bottom: -1, right: -1 }, "180deg")}>
+          <Flourish />
+        </div>
+        <div style={corner({ bottom: -1, left: -1 }, "270deg")}>
+          <Flourish />
+        </div>
 
-        <p dir="rtl" lang="ar" style={{ fontSize: 34, color: BURGUNDY, margin: 0 }}>
-          بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+        <p style={{ ...head, fontSize: 30, fontWeight: 500, letterSpacing: "0.16em" }}>
+          In the Name of Allah
+        </p>
+        <p style={{ ...tiny, fontSize: 18, marginTop: 12 }}>
+          “The Most Gracious, the Most Merciful”
         </p>
 
-        <p style={{ ...label, marginTop: 48 }}>Hosted by</p>
-        <p style={{ fontFamily: SERIF, fontSize: 30, margin: "12px 0 0", color: INK }}>
-          Mr. Abdul Jabbar &amp; Mrs. Shereena Jabbar
+        <p style={{ ...head, marginTop: 50 }}>Mr. Abdul Jabbar &amp; Mrs. Shereena Jabbar</p>
+        <p style={{ ...tiny, marginTop: 12 }}>Kunnumpurath House, Koorachundu, Kozhikode</p>
+
+        <p style={{ ...tiny, marginTop: 46 }}>
+          Cordially invite your presence on the auspicious occasion of the
         </p>
-        <p style={{ fontFamily: SANS, fontSize: 17, color: MUTED, margin: "6px 0 0" }}>
-          Kunnumpurath House, Koorachundu, Kozhikode
+        <p style={{ ...head, fontSize: 47, letterSpacing: "0.12em", marginTop: 20 }}>
+          Wedding Reception
+        </p>
+        <p style={{ ...tiny, marginTop: 18, letterSpacing: "0.2em" }}>Of our beloved son</p>
+
+        <p style={{ ...script, fontSize: 132, marginTop: 14 }}>Adhil</p>
+        <p style={{ ...script, fontSize: 78, marginTop: 2 }}>&amp;</p>
+        <p style={{ ...script, fontSize: 132, marginTop: 2 }}>Safa</p>
+
+        <p style={{ ...tiny, marginTop: 22 }}>D/o Mr. P.M. Basheer &amp; Mrs. Shameera Basheer</p>
+        <p style={{ ...tiny, fontSize: 17, marginTop: 10 }}>
+          Panikkaveetil House, Kunnamkulam, Thrissur
         </p>
 
         <p
-          style={{
-            fontFamily: SERIF,
-            fontSize: 24,
-            color: MUTED,
-            lineHeight: 1.55,
-            margin: "44px auto 0",
-            maxWidth: 620,
-          }}
+          style={{ ...head, fontSize: 50, fontWeight: 500, letterSpacing: "0.1em", marginTop: 54 }}
         >
-          With joyful hearts, we request the honor of your presence at the wedding ceremony of our
-          beloved son
+          July&nbsp;&middot;&nbsp;11&nbsp;&middot;&nbsp;2026
         </p>
+        <p style={{ ...tiny, marginTop: 18, letterSpacing: "0.2em" }}>From 12:30 PM</p>
 
-        <h2
-          style={{
-            fontFamily: SERIF,
-            fontSize: 96,
-            fontWeight: 500,
-            color: BURGUNDY,
-            margin: "40px 0 0",
-            letterSpacing: "0.04em",
-          }}
-        >
-          ADHIL
-        </h2>
-        <p style={lineage}>
-          (Grand S/o. Hameed Haji &amp; (late) Sulaykha, Said Muhammed &amp; Sara)
+        <p style={{ ...head, marginTop: 46 }}>Hibas Auditorium</p>
+        <p style={{ ...tiny, marginTop: 10 }}>Koorachundu, Kozhikode</p>
+
+        <p style={{ ...tiny, fontSize: 17, marginTop: 48, letterSpacing: "0.2em" }}>
+          With best compliments
         </p>
-
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 20,
-            margin: "44px 0",
-          }}
+        <p
+          style={{ ...head, fontSize: 23, fontWeight: 500, letterSpacing: "0.08em", marginTop: 10 }}
         >
-          <span style={{ height: 1, width: 90, background: "rgba(42,33,31,0.25)" }} />
-          <span style={{ fontFamily: SCRIPT, fontSize: 52, color: GOLD, lineHeight: 1 }}>and</span>
-          <span style={{ height: 1, width: 90, background: "rgba(42,33,31,0.25)" }} />
-        </div>
-
-        <h2
-          style={{
-            fontFamily: SERIF,
-            fontSize: 96,
-            fontWeight: 500,
-            color: BURGUNDY,
-            margin: 0,
-            letterSpacing: "0.04em",
-          }}
-        >
-          SAFA
-        </h2>
-        <p style={lineage}>(D/o. Mr. P.M. Basheer &amp; Mrs. Shameera Basheer)</p>
-
-        <p dir="rtl" lang="ar" style={{ fontSize: 32, color: BURGUNDY, margin: "52px 0 0" }}>
-          إن شاء الله
-        </p>
-
-        {/* event meta */}
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            gap: 0,
-            marginTop: 48,
-            paddingTop: 44,
-            borderTop: `1px solid ${SAGE}`,
-          }}
-        >
-          <div style={{ flex: 1, padding: "0 16px" }}>
-            <p style={label}>When</p>
-            <p style={{ fontFamily: SERIF, fontSize: 26, margin: "12px 0 0" }}>Saturday</p>
-            <p style={{ fontFamily: SERIF, fontSize: 30, color: BURGUNDY, margin: "4px 0 0" }}>
-              11
-            </p>
-            <p style={{ fontFamily: SERIF, fontSize: 20, color: MUTED, margin: 0 }}>July 2026</p>
-            <p style={{ fontFamily: SANS, fontSize: 13, color: MUTED, margin: "4px 0 0" }}>
-              26 Muharram 1448
-            </p>
-          </div>
-          <div
-            style={{
-              flex: 1,
-              padding: "0 16px",
-              borderLeft: `1px solid ${SAGE}`,
-              borderRight: `1px solid ${SAGE}`,
-            }}
-          >
-            <p style={label}>Wedding</p>
-            <p style={{ fontFamily: SERIF, fontSize: 32, margin: "12px 0 0" }}>12:30</p>
-            <p style={{ fontFamily: SERIF, fontSize: 18, color: MUTED, margin: 0 }}>PM</p>
-          </div>
-          <div style={{ flex: 1, padding: "0 16px" }}>
-            <p style={label}>Venue</p>
-            <p style={{ fontFamily: SERIF, fontSize: 26, margin: "12px 0 0" }}>Hibas Auditorium</p>
-            <p style={{ fontFamily: SANS, fontSize: 16, color: MUTED, margin: 0 }}>Koorachundu</p>
-          </div>
-        </div>
-
-        {/* Sharing the happiness — mirrors the on-page card */}
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: 14,
-            marginTop: 48,
-            color: GOLD,
-          }}
-        >
-          <span style={{ height: 1, width: 56, background: GOLD_SOFT }} />
-          <svg width="20" height="20" viewBox="0 0 24 24" fill={GOLD}>
-            <path
-              d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6L12 3z"
-              opacity="0.85"
-            />
-          </svg>
-          <span style={{ height: 1, width: 56, background: GOLD_SOFT }} />
-        </div>
-        <p style={{ ...label, marginTop: 22 }}>Sharing the happiness</p>
-        <p style={{ fontFamily: SERIF, fontSize: 22, margin: "8px 0 0", color: INK }}>
-          Muhammad Nidhil
-        </p>
-
-        <p style={{ fontFamily: SCRIPT, fontSize: 44, color: BURGUNDY, margin: "40px 0 0" }}>
-          Adhil &amp; Safa
-        </p>
-        <p style={{ ...label, fontSize: 12, marginTop: 8 }}>
-          Your presence and prayers are our greatest gift
+          Muhammed Nidhil
         </p>
       </div>
     </div>
@@ -535,7 +419,7 @@ function DownloadCardButton() {
       if (typeof document !== "undefined" && document.fonts) {
         await document.fonts.ready;
       }
-      const opts = { pixelRatio: 2.5, cacheBust: true, backgroundColor: IVORY };
+      const opts = { pixelRatio: 2.5, cacheBust: true, backgroundColor: CARD_BG };
       // First pass warms up font/image embedding; the second renders correctly.
       await toPng(node, opts);
       const dataUrl = await toPng(node, opts);
