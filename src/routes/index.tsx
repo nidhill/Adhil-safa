@@ -633,72 +633,61 @@ function Invitation() {
       {/* INVITATION CARD */}
       <section id="invitation" className="px-6 py-24">
         <Reveal className="mx-auto max-w-3xl rounded-sm border border-[color:var(--sage)] bg-card/80 px-6 py-16 text-center shadow-xl backdrop-blur sm:px-14">
-          <p dir="rtl" lang="ar" className="text-2xl text-[color:var(--burgundy)]">
-            بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
+          <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">
+            In the Name of Allah
+          </p>
+          <p className="mt-2 text-[11px] uppercase tracking-[0.3em] text-muted-foreground">
+            “The Most Gracious, the Most Merciful”
           </p>
 
-          <div className="mt-10">
-            <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Hosted by</p>
-            <p className="mt-3 font-serif text-xl">Mr. Abdul Jabbar &amp; Mrs. Shereena Jabbar</p>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Kunnumpurath House, Koorachundu, Kozhikode
-            </p>
-          </div>
-
-          <p className="mx-auto mt-10 max-w-xl font-serif text-lg leading-relaxed text-muted-foreground">
-            With joyful hearts, we request the honor of your presence at the wedding ceremony of our
-            beloved son
+          <p className="mt-10 font-serif text-2xl">Mr. Abdul Jabbar &amp; Mrs. Shereena Jabbar</p>
+          <p className="mt-1 text-sm text-muted-foreground">
+            Kunnumpurath House, Koorachundu, Kozhikode
           </p>
 
-          <h3 className="mt-8 font-serif text-7xl text-[color:var(--burgundy)] tracking-wide">
-            ADHIL
+          <p className="mx-auto mt-10 max-w-xl text-[11px] uppercase leading-relaxed tracking-[0.3em] text-muted-foreground">
+            Cordially invite your presence on the auspicious occasion of the
+          </p>
+          <h3 className="mt-5 font-serif text-4xl uppercase tracking-[0.12em] text-[color:var(--burgundy)] sm:text-5xl">
+            Wedding Reception
           </h3>
-          <p className="mx-auto mt-2 max-w-md text-xs italic text-muted-foreground">
-            (Grand S/o. Hameed Haji &amp; (late) Sulaykha, Said Muhammed &amp; Sara)
+          <p className="mt-4 text-xs uppercase tracking-[0.3em] text-muted-foreground">
+            Of our beloved son
           </p>
 
-          <div className="my-10 flex items-center justify-center">
-            <span className="h-px w-16 bg-foreground/30" />
-            <span className="mx-4 font-script text-4xl text-[color:var(--gold)]">and</span>
-            <span className="h-px w-16 bg-foreground/30" />
-          </div>
-
-          <h3 className="font-serif text-7xl text-[color:var(--burgundy)] tracking-wide">SAFA</h3>
-          <p className="mx-auto mt-2 max-w-md text-xs italic text-muted-foreground">
-            (D/o. Mr. P.M. Basheer &amp; Mrs. Shameera Basheer)
+          <p className="mt-4 font-script text-7xl leading-none text-[color:var(--burgundy)] sm:text-8xl">
+            Adhil
+          </p>
+          <p className="font-script text-5xl leading-tight text-[color:var(--gold)]">&amp;</p>
+          <p className="font-script text-7xl leading-none text-[color:var(--burgundy)] sm:text-8xl">
+            Safa
           </p>
 
-          <p dir="rtl" lang="ar" className="mt-12 text-2xl text-[color:var(--burgundy)]">
-            إن شاء الله
+          <p className="mx-auto mt-6 max-w-md text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+            D/o Mr. P.M. Basheer &amp; Mrs. Shameera Basheer
+          </p>
+          <p className="mx-auto mt-1 max-w-md text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+            Panikkaveetil House, Kunnamkulam, Thrissur
           </p>
 
-          {/* Event meta */}
-          <div className="mt-10 grid gap-8 border-t border-border pt-10 sm:grid-cols-3">
-            <div>
-              <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">When</p>
-              <p className="mt-3 font-serif text-2xl">Saturday</p>
-              <p className="mt-1 font-serif text-3xl text-[color:var(--burgundy)]">11</p>
-              <p className="font-serif text-xl text-muted-foreground">July 2026</p>
-              <p className="mt-1 text-xs text-muted-foreground">26 Muharram 1448</p>
-            </div>
-            <div className="sm:border-x sm:border-border">
-              <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Wedding</p>
-              <p className="mt-3 font-serif text-3xl">12:30</p>
-              <p className="font-serif text-base text-muted-foreground">PM</p>
-            </div>
-            <div>
-              <p className="text-xs uppercase tracking-[0.35em] text-muted-foreground">Venue</p>
-              <p className="mt-3 font-serif text-2xl">Hibas Auditorium</p>
-              <p className="text-sm text-muted-foreground">Koorachundu</p>
-            </div>
-          </div>
+          <p className="mt-12 font-serif text-3xl tracking-[0.08em] text-[color:var(--burgundy)] sm:text-4xl">
+            July · 11 · 2026
+          </p>
+          <p className="mt-3 text-xs uppercase tracking-[0.3em] text-muted-foreground">
+            From 12:30 PM
+          </p>
+
+          <p className="mt-10 font-serif text-2xl">Hibas Auditorium</p>
+          <p className="mt-1 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+            Koorachundu, Kozhikode
+          </p>
 
           <div className="mt-12">
             <Ornament />
             <p className="mt-6 text-xs uppercase tracking-[0.35em] text-muted-foreground">
-              Sharing the happiness
+              With best compliments
             </p>
-            <p className="mt-2 font-serif text-lg">Muhammad Nidhil</p>
+            <p className="mt-2 font-serif text-lg">Muhammed Nidhil</p>
           </div>
         </Reveal>
       </section>
