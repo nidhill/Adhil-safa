@@ -374,9 +374,13 @@ function PrintableCard({ cardRef }: { cardRef: React.Ref<HTMLDivElement> }) {
         </p>
         <p style={{ ...tiny, marginTop: 18, letterSpacing: "0.2em" }}>Of our beloved son</p>
 
-        <p style={{ ...script, fontSize: 132, marginTop: 14 }}>Adhil</p>
+        <p style={{ ...script, fontSize: 132, marginTop: 14 }}>
+          <span style={{ fontSize: 166 }}>A</span>dhil
+        </p>
         <p style={{ ...script, fontSize: 78, marginTop: 2 }}>&amp;</p>
-        <p style={{ ...script, fontSize: 132, marginTop: 2 }}>Safa</p>
+        <p style={{ ...script, fontSize: 132, marginTop: 2 }}>
+          <span style={{ fontSize: 166 }}>S</span>afa
+        </p>
 
         <p style={{ ...tiny, marginTop: 22 }}>D/o Mr. P.M. Basheer &amp; Mrs. Shameera Basheer</p>
         <p style={{ ...tiny, fontSize: 17, marginTop: 10 }}>
@@ -656,11 +660,11 @@ function Invitation() {
           </p>
 
           <p className="mt-4 font-script text-7xl leading-none text-[color:var(--burgundy)] sm:text-8xl">
-            Adhil
+            <span className="text-[1.25em]">A</span>dhil
           </p>
           <p className="font-script text-5xl leading-tight text-[color:var(--gold)]">&amp;</p>
           <p className="font-script text-7xl leading-none text-[color:var(--burgundy)] sm:text-8xl">
-            Safa
+            <span className="text-[1.25em]">S</span>afa
           </p>
 
           <p className="mx-auto mt-6 max-w-md text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
