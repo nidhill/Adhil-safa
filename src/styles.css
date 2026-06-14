@@ -10,9 +10,9 @@
 }
 
 @theme inline {
-  --font-serif: "Playfair Display", "Cormorant Garamond", Georgia, serif;
-  --font-script: "Pinyon Script", "Great Vibes", cursive;
-  --font-sans: "Jost", "Karla", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+  --font-script: "Great Vibes", "Pinyon Script", cursive;
+  --font-sans: "Cormorant Garamond", Georgia, serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -42,31 +42,31 @@
 
 :root {
   --radius: 0.25rem;
-  --background: oklch(0.985 0.005 95); /* warm ivory */
-  --foreground: oklch(0.22 0.02 25); /* near black */
-  --card: oklch(0.99 0.004 95);
-  --card-foreground: oklch(0.22 0.02 25);
-  --popover: oklch(0.99 0.004 95);
-  --popover-foreground: oklch(0.22 0.02 25);
-  --primary: oklch(0.38 0.09 20); /* deep burgundy */
-  --primary-foreground: oklch(0.985 0.005 95);
-  --secondary: oklch(0.93 0.02 130); /* pale sage */
-  --secondary-foreground: oklch(0.3 0.04 140);
-  --muted: oklch(0.95 0.01 95);
-  --muted-foreground: oklch(0.45 0.02 95);
-  --accent: oklch(0.75 0.08 75); /* warm gold */
-  --accent-foreground: oklch(0.22 0.02 25);
+  --background: oklch(0.987 0.003 250); /* cool ivory */
+  --foreground: oklch(0.26 0.06 268); /* deep navy ink */
+  --card: oklch(0.992 0.002 250);
+  --card-foreground: oklch(0.26 0.06 268);
+  --popover: oklch(0.992 0.002 250);
+  --popover-foreground: oklch(0.26 0.06 268);
+  --primary: oklch(0.31 0.11 270); /* navy */
+  --primary-foreground: oklch(0.987 0.003 250);
+  --secondary: oklch(0.93 0.02 262); /* pale blue */
+  --secondary-foreground: oklch(0.3 0.06 268);
+  --muted: oklch(0.95 0.008 255);
+  --muted-foreground: oklch(0.46 0.04 266);
+  --accent: oklch(0.52 0.1 266); /* royal blue accent */
+  --accent-foreground: oklch(0.987 0.003 250);
   --destructive: oklch(0.55 0.2 25);
   --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.88 0.02 95);
-  --input: oklch(0.88 0.02 95);
-  --ring: oklch(0.6 0.06 130);
+  --border: oklch(0.88 0.018 262);
+  --input: oklch(0.88 0.018 262);
+  --ring: oklch(0.55 0.08 266);
 
-  --sage: oklch(0.86 0.03 145);
-  --sage-deep: oklch(0.55 0.06 145);
-  --burgundy: oklch(0.38 0.09 20);
-  --gold: oklch(0.72 0.1 75);
-  --ivory: oklch(0.985 0.005 95);
+  --sage: oklch(0.86 0.025 262); /* light blue-grey (frames/veil) */
+  --sage-deep: oklch(0.55 0.05 264);
+  --burgundy: oklch(0.31 0.11 270); /* repurposed → navy */
+  --gold: oklch(0.52 0.1 266); /* repurposed → royal-blue accent */
+  --ivory: oklch(0.987 0.003 250);
 }
 
 @layer base {
